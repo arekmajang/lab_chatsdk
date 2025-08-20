@@ -1,3 +1,9 @@
+## 1.0.2
+
+* Added clear chat functionality with app bar button
+* Users can clear all messages anytime during chat
+* Clear button with tooltip in chat widget header
+
 ## 1.0.1
 
 * Added page routing support with callback functionality

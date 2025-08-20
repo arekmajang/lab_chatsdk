@@ -30,29 +30,32 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Chat SDK Example')),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SimpleChatWidget(
-                config: const ChatConfig(
-                  baseUrl: 'http://localhost:8080',
-                  sdkKey: 'your-sdk-key-here',
-                ),
-                title: 'SDK Example Chat',
-                onPageRoute: (page, params) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PageRouteScreen(
-                        page: page,
-                        params: params,
+          onPressed:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (context) => SimpleChatWidget(
+                        config: const ChatConfig(
+                          baseUrl: 'http://localhost:8080',
+                          sdkKey: 'your-sdk-key-here',
+                        ),
+                        title: 'SDK Example Chat 1',
+                        onPageRoute: (page, params) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) => PageRouteScreen(
+                                    page: page,
+                                    params: params,
+                                  ),
+                            ),
+                          );
+                        },
                       ),
-                    ),
-                  );
-                },
+                ),
               ),
-            ),
-          ),
           child: const Text('Open Chat'),
         ),
       ),
@@ -83,9 +86,12 @@ class PageRouteScreen extends StatelessWidget {
           children: [
             Text('Page: $page', style: const TextStyle(fontSize: 24)),
             const SizedBox(height: 16),
-            if (params != null) ...
-              params!.entries.map(
-                (e) => Text('${e.key}: ${e.value}', style: const TextStyle(fontSize: 16)),
+            if (params != null)
+              ...params!.entries.map(
+                (e) => Text(
+                  '${e.key}: ${e.value}',
+                  style: const TextStyle(fontSize: 16),
+                ),
               ),
             const SizedBox(height: 32),
             ElevatedButton(

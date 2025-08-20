@@ -71,12 +71,25 @@ class _SimpleChatWidgetState extends State<SimpleChatWidget> {
     }
   }
 
+  void _clearChat() {
+    setState(() {
+      _messages.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title ?? 'Chat'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          IconButton(
+            onPressed: _clearChat,
+            icon: const Icon(Icons.clear_all),
+            tooltip: 'Clear Chat',
+          ),
+        ],
       ),
       body: Column(
         children: [
