@@ -57,6 +57,22 @@ ChatConfig(
 )
 ```
 
+### Page Routing
+
+```dart
+SimpleChatWidget(
+  config: config,
+  onPageRoute: (page, params) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => YourPage(page: page, params: params),
+      ),
+    );
+  },
+)
+```
+
 ### Custom Integration
 
 ```dart
@@ -69,5 +85,17 @@ final response = await chatService.sendMessage('Hello!');
 
 Your API should:
 - Accept POST requests with JSON body: `{"text": "user message"}`
-- Return JSON response: `{"text": "bot response"}`
+- Return JSON response with optional page routing:
+  ```json
+  {
+    "text": "bot response",
+    "pageRoute": {
+      "page": "transfer",
+      "param": {
+        "to": "456",
+        "amount": 100000
+      }
+    }
+  }
+  ```
 - Support Authorization header with Bearer token
